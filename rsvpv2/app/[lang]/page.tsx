@@ -29,7 +29,7 @@ export default async function HomePage() {
         <RSVPSection />
       </SectionReveal>
 
-      <SectionReveal id="contact" className="section max-w-3xl mx-auto px-4 sm:px-6 pb-24">
+      <SectionReveal id="contact" className="section max-w-3xl mx-auto px-4 sm:px-6 pb-40 sm:pb-48">
         <ContactSection />
       </SectionReveal>
     </>

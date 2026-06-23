@@ -37,6 +37,11 @@
   "info": {
     "title": "Walimatulurus",
     "welcome": "Selamat datang ke majlis perkahwinan kami",
+    "greeting": "Assalamualaikum Warahmatullahi Wabarakatuh & Salam Sejahtera",
+    "blessing": "Dengan Nama Allah Yang Maha Pemurah Lagi Maha Penyayang",
+    "invitationLine": "Dengan penuh kesyukuran, kami menjemput dan mempersilakan",
+    "weddingOfDaughter": "ke majlis perkahwinan putera dan puteri kami",
+    "honorifics": "Tan Sri | Puan Sri | Dato' Seri | Dato' | Datin | Tuan | Puan",
     "bride": "Pengantin Perempuan",
     "brideName": "Puteri Safa Natasha",
     "brideParents": "Anak kepada Megat Sharizal & Siti Rahayu",
@@ -48,9 +53,9 @@
     "venueLabel": "Tempat",
     "venueValue": "The Glass Galore, Tamarind Square, Cyberjaya",
     "timeLabel": "Masa",
-    "timeValue": "11:00 pagi – 4:00 petang",
+    "timeValue": "11:00 pagi â€“ 4:00 petang",
     "dresscode": "Pakaian",
-    "dresscodeValue": "Hijau untuk pengantin lelaki · Kuning untuk pengantin perempuan · Busana tradisional dialu-alukan",
+    "dresscodeValue": "Hijau untuk pengantin lelaki Â· Kuning untuk pengantin perempuan Â· Busana tradisional dialu-alukan",
     "wishesTitle": "Ucapan daripada Tetamu",
     "wishesEmpty": "Jadilah yang pertama meninggalkan ucapan untuk pengantin.",
     "wishesFrom": "daripada"
@@ -100,21 +105,21 @@
       },
       { "time": "11:00 AM", "label": "Persiapan sanding" },
       {
-        "time": "11:00 AM – 12:00 PM",
+        "time": "11:00 AM â€“ 12:00 PM",
         "label": "Persiapan solekan & busana sanding"
       },
       {
-        "time": "12:00 PM – 1:15 PM",
+        "time": "12:00 PM â€“ 1:15 PM",
         "label": "Sesi foto luar (busana sanding)"
       },
       {
-        "time": "1:15 PM – 1:30 PM",
+        "time": "1:15 PM â€“ 1:30 PM",
         "label": "Sentuhan akhir & bersolek semula"
       },
       { "section": "Resepsi" },
       {
         "time": "1:30 PM",
-        "items": ["Perarakan keluarga", "Ketibaan rasmi — Pengantin"]
+        "items": ["Perarakan keluarga", "Ketibaan rasmi â€” Pengantin"]
       },
       {
         "time": "2:00 PM",
@@ -126,7 +131,7 @@
         ]
       },
       {
-        "time": "3:30 PM – 3:45 PM",
+        "time": "3:30 PM â€“ 3:45 PM",
         "label": "Pengumuman penutup"
       },
       { "time": "4:00 PM", "label": "Penutup majlis" }
@@ -139,7 +144,7 @@
     "yes": "Ya, saya akan hadir",
     "no": "Maaf, tidak dapat hadir",
     "guestCount": "Berapa ramai yang akan hadir?",
-    "guestCountHint": "Termasuk diri sendiri (1–10 tetamu)",
+    "guestCountHint": "Termasuk diri sendiri (1â€“10 tetamu)",
     "guestName": "Nama Tetamu",
     "guestNamePlaceholder": "Nama penuh",
     "phone": "Nombor Telefon",
@@ -153,7 +158,7 @@
     "another": "Hantar RSVP Lain",
     "errors": {
       "attendance": "Sila pilih sama ada anda akan hadir.",
-      "guestCount": "Sila masukkan bilangan tetamu (1–10).",
+      "guestCount": "Sila masukkan bilangan tetamu (1â€“10).",
       "name": "Sila masukkan nama anda.",
       "phone": "Sila masukkan nombor telefon yang sah.",
       "guestDetails": "Sila lengkapkan nama dan telefon untuk setiap tetamu.",
@@ -177,3 +182,4 @@
     "and": "&"
   }
 }
+

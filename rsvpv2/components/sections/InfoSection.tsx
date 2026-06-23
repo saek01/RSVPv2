@@ -6,65 +6,153 @@ import { WishesList } from "@/components/WishesList";
 
 export function InfoSection() {
   const { t } = useI18n();
+
+  // Groom's parents on the left, bride's parents on the right.
+  // Each side shows both parents stacked (father on top, mother below).
+  const groomParents = `${wedding.groom.father} & ${wedding.groom.mother}`;
+  const brideParents = `${wedding.bride.father} & ${wedding.bride.mother}`;
+
   return (
-    <div className="space-y-20">
-      <header className="text-center space-y-2">
+    <div className="space-y-16">
+      {/* Top: Walimatulurus header card */}
+      <header className="text-center space-y-3">
         <div className="divider-ornament" aria-hidden>
           <span>🍋</span>
           <span>✦</span>
           <span>🌿</span>
         </div>
         <h2 className="section-title">{t.info.title}</h2>
-        <p className="section-subtitle">{t.info.welcome}</p>
       </header>
 
-      {/* Couple — just text */}
-      <div className="text-center space-y-10">
-        <div>
-          <p
-            className="text-xs uppercase tracking-[0.3em]"
-            style={{ color: "var(--leaf-700)" }}
-          >
-            {t.info.bride}
+      {/* Greeting + blessing */}
+      <div className="text-center space-y-2">
+        <p
+          className="font-script text-xl sm:text-2xl"
+          style={{ color: "var(--leaf-700)" }}
+        >
+          {t.info.greeting}
+        </p>
+        <p
+          className="text-sm italic"
+          style={{ color: "var(--ink-muted)" }}
+        >
+          {t.info.blessing}
+        </p>
+      </div>
+
+      {/* Parents inviting — groom's on the left, bride's on the right */}
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 sm:gap-6">
+        <div className="text-center sm:text-right space-y-1">
+          <p className="text-xs uppercase tracking-[0.3em]" style={{ color: "var(--leaf-700)" }}>
+            {t.info.groom}
           </p>
           <h3
-            className="couple-name mt-3"
-            style={{ fontSize: "clamp(2.2rem, 7vw, 3.4rem)" }}
+            className="font-display text-xl sm:text-2xl"
+            style={{ color: "var(--leaf-700)" }}
           >
-            {wedding.bride.fullName}
+            {wedding.groom.father}
           </h3>
-          <p className="mt-3 text-base italic" style={{ color: "var(--ink-muted)" }}>
-            {wedding.bride.father} &amp; {wedding.bride.mother}
+          <p
+            className="couple-amp"
+            style={{ fontSize: "1.4rem", color: "var(--leaf-600)", lineHeight: 1 }}
+          >
+            &amp;
           </p>
+          <h3
+            className="font-display text-xl sm:text-2xl"
+            style={{ color: "var(--leaf-700)" }}
+          >
+            {wedding.groom.mother}
+          </h3>
         </div>
 
         <span
           className="couple-amp"
-          style={{ fontSize: "2.5rem", color: "var(--leaf-600)" }}
+          style={{ fontSize: "2rem", color: "var(--leaf-600)" }}
         >
           &amp;
         </span>
 
-        <div>
-          <p
-            className="text-xs uppercase tracking-[0.3em]"
-            style={{ color: "var(--leaf-700)" }}
-          >
-            {t.info.groom}
+        <div className="text-center sm:text-left space-y-1">
+          <p className="text-xs uppercase tracking-[0.3em]" style={{ color: "var(--leaf-700)" }}>
+            {t.info.bride}
           </p>
           <h3
-            className="couple-name mt-3"
-            style={{ fontSize: "clamp(2.2rem, 7vw, 3.4rem)" }}
+            className="font-display text-xl sm:text-2xl"
+            style={{ color: "var(--leaf-700)" }}
           >
-            {wedding.groom.fullName}
+            {wedding.bride.father}
           </h3>
-          <p className="mt-3 text-base italic" style={{ color: "var(--ink-muted)" }}>
-            {wedding.groom.father} &amp; {wedding.groom.mother}
+          <p
+            className="couple-amp"
+            style={{ fontSize: "1.4rem", color: "var(--leaf-600)", lineHeight: 1 }}
+          >
+            &amp;
           </p>
+          <h3
+            className="font-display text-xl sm:text-2xl"
+            style={{ color: "var(--leaf-700)" }}
+          >
+            {wedding.bride.mother}
+          </h3>
         </div>
       </div>
 
-      {/* Details */}
+      {/* Invitation line + honorifics + wedding-of */}
+      <div className="text-center space-y-2">
+        <p
+          className="font-display italic text-lg sm:text-xl"
+          style={{ color: "var(--leaf-700)" }}
+        >
+          {t.info.invitationLine}
+        </p>
+        <p
+          className="text-xs uppercase tracking-[0.25em]"
+          style={{ color: "var(--leaf-600)" }}
+        >
+          {t.info.honorifics}
+        </p>
+        <p
+          className="font-display italic text-lg sm:text-xl pt-1"
+          style={{ color: "var(--leaf-700)" }}
+        >
+          {t.info.weddingOfDaughter}
+        </p>
+      </div>
+
+      {/* Couple names in script (the centerpiece) */}
+      <div className="text-center">
+        <p
+          className="font-script text-leaf-700"
+          style={{
+            fontFamily: "var(--font-script)",
+            fontSize: "clamp(2.8rem, 8vw, 5rem)",
+            lineHeight: 1.1,
+            color: "var(--leaf-700)",
+          }}
+        >
+          {wedding.bride.fullName}
+        </p>
+        <p
+          className="couple-amp my-1"
+          style={{ fontSize: "1.8rem", color: "var(--leaf-600)" }}
+        >
+          &amp;
+        </p>
+        <p
+          className="font-script"
+          style={{
+            fontFamily: "var(--font-script)",
+            fontSize: "clamp(2.8rem, 8vw, 5rem)",
+            lineHeight: 1.1,
+            color: "var(--leaf-700)",
+          }}
+        >
+          {wedding.groom.fullName}
+        </p>
+      </div>
+
+      {/* Existing details grid */}
       <dl className="grid sm:grid-cols-2 gap-x-10 gap-y-10">
         <DetailRow label={t.info.dateLabel} value={t.info.dateValue} />
         <DetailRow label={t.info.timeLabel} value={t.info.timeValue} />

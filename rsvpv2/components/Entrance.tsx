@@ -73,18 +73,18 @@ export function Entrance() {
               {t.entrance.dear} {t.entrance.guest}
             </p>
 
-            <h1 className="couple-name mt-3">
-              <span className="block">{t.info.brideName.split(" binti ")[0]}</span>
-              <span className="couple-amp">{t.entrance.and}</span>
-              <span className="block">{t.info.groomName.split(" bin ")[0]}</span>
-            </h1>
-
             <p
-              className="mt-6 max-w-xl text-lg italic"
+              className="mt-4 max-w-xl text-lg italic"
               style={{ color: "var(--ink-soft)" }}
             >
               {t.entrance.invitation}
             </p>
+
+            <h1 className="couple-name mt-6">
+              <span className="block">{t.info.brideName.split(" binti ")[0]}</span>
+              <span className="couple-amp">{t.entrance.and}</span>
+              <span className="block">{t.info.groomName.split(" bin ")[0]}</span>
+            </h1>
 
             <p className="wedding-date mt-8">{t.entrance.date}</p>
             <p
