@@ -34,9 +34,15 @@ export function FloatingNav() {
 
   useEffect(() => {
     // Show dock only after the user scrolls past the first viewport
-    // (i.e. past the entrance / hero).
+    // (i.e. past the entrance / hero). Hide when we're near the bottom of
+    // the page so the dock doesn't cover the last contact section's
+    // call/WhatsApp buttons.
     function onScroll() {
-      setVisible(window.scrollY > window.innerHeight * 0.4);
+      const past = window.scrollY > window.innerHeight * 0.4;
+      const doc = document.documentElement;
+      const remaining = doc.scrollHeight - window.scrollY - window.innerHeight;
+      const atEnd = remaining < 80;
+      setVisible(past && !atEnd);
     }
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

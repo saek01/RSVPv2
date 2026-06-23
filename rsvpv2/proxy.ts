@@ -28,10 +28,11 @@ function getLocale(request: NextRequest): string {
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Skip API, static files, and Next.js internals
+  // Skip API, static files, Next.js internals, and the admin section.
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
+    pathname.startsWith("/admin") ||
     pathname.includes(".") // files with extensions
   ) {
     return NextResponse.next();

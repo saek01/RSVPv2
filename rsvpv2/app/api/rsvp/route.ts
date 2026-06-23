@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { prisma } from "@/lib/db";
 import { createHash } from "node:crypto";
+import { requireAdmin } from "@/lib/auth";
 
 // Local re-implementations of the client-side validators so the server
 // enforces the same shape (never trust the client).
@@ -164,4 +165,15 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+// GET /api/rsvp — list all RSVPs (admin only).
+export async function GET(request: NextRequest) {
+  const auth = requireAdmin(request);
+  if (auth) return auth;
+
+  const rsvps = await prisma.rsvp.findMany({
+    orderBy: { submittedAt: "desc" },
+  });
+  return NextResponse.json({ ok: true, rsvps });
 }

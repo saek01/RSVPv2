@@ -9,7 +9,13 @@ export function ScrollToTop() {
 
   useEffect(() => {
     function onScroll() {
-      setVisible(window.scrollY > window.innerHeight * 0.6);
+      const past = window.scrollY > window.innerHeight * 0.6;
+      // Hide near the bottom of the page so the button doesn't sit on top
+      // of the final contact section's call/WhatsApp buttons.
+      const doc = document.documentElement;
+      const remaining = doc.scrollHeight - window.scrollY - window.innerHeight;
+      const atEnd = remaining < 80;
+      setVisible(past && !atEnd);
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();

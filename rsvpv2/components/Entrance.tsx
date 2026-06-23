@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "./I18nProvider";
 import { Countdown } from "./Countdown";
@@ -13,6 +13,79 @@ const CONTENT_DELAY = 0.45;
 export function Entrance() {
   const [open, setOpen] = useState(false);
   const { t } = useI18n();
+
+  // Lock page scroll while the entrance is closed. We:
+  //   1. Force the scroll position to the top (overriding the browser's
+  //      own "scroll restoration" memory from the previous visit).
+  //   2. Hide overflow on <html> so the page can't be scrolled.
+  //   3. Block wheel, touch, and arrow-key scrolling on the window.
+  //   4. Set overscroll-behavior: contain so wheel doesn't bubble.
+  //
+  // We do NOT pin the body with `position: fixed; top: -${scrollY}px`
+  // because that hack can leave the page visually offset on iOS Safari
+  // after a refresh — the user would see a black/empty screen above
+  // the entrance. Since the entrance fills the first viewport, the
+  // user has nothing to look at above it anyway, so a plain overflow
+  // lock is the right choice.
+  useEffect(() => {
+    if (open) return;
+
+    // Disable the browser's "scroll restoration" so a refresh always
+    // starts at the top of the page, then jump to the top in case the
+    // browser had already restored a position before this effect ran.
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    if (window.scrollY !== 0) {
+      window.scrollTo(0, 0);
+    }
+
+    const body = document.body;
+    const html = document.documentElement;
+    const prev = {
+      bodyOverflow: body.style.overflow,
+      htmlOverflow: html.style.overflow,
+      htmlOverscroll: html.style.overscrollBehavior,
+    };
+
+    body.style.overflow = "hidden";
+    html.style.overflow = "hidden";
+    html.style.overscrollBehavior = "contain";
+
+    function prevent(e: Event) {
+      e.preventDefault();
+    }
+    function onKey(e: KeyboardEvent) {
+      const blocked = [
+        "PageDown",
+        "PageUp",
+        "ArrowDown",
+        "ArrowUp",
+        "ArrowLeft",
+        "ArrowRight",
+        "Home",
+        "End",
+        " ",
+      ];
+      if (blocked.includes(e.key)) {
+        const target = e.target as HTMLElement | null;
+        if (target?.tagName === "BUTTON" || target?.tagName === "A") return;
+        e.preventDefault();
+      }
+    }
+    window.addEventListener("wheel", prevent, { passive: false });
+    window.addEventListener("touchmove", prevent, { passive: false });
+    window.addEventListener("keydown", onKey);
+
+    return () => {
+      window.removeEventListener("wheel", prevent);
+      window.removeEventListener("touchmove", prevent);
+      window.removeEventListener("keydown", onKey);
+      body.style.overflow = prev.bodyOverflow;
+      html.style.overflow = prev.htmlOverflow;
+      html.style.overscrollBehavior = prev.htmlOverscroll;
+    };
+  }, [open]);
 
   function handleOpen() {
     if (open) return;
