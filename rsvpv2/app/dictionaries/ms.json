@@ -1,0 +1,179 @@
+{
+  "site": {
+    "title": "Puteri & Amir",
+    "tagline": "Kami akan berkahwin",
+    "saveTheDate": "Simpan Tarikh"
+  },
+  "nav": {
+    "home": "Utama",
+    "info": "Maklumat",
+    "map": "Lokasi",
+    "itinerary": "Atur Cara",
+    "rsvp": "RSVP",
+    "contact": "Hubungi",
+    "language": "Bahasa",
+    "english": "English",
+    "malay": "Bahasa Melayu",
+    "open": "Buka jemputan"
+  },
+  "entrance": {
+    "dear": "Untuk",
+    "guest": "Tetamu",
+    "invitation": "Anda dijemput ke majlis perkahwinan",
+    "and": "dan",
+    "date": "Isnin, 31 Ogos 2026",
+    "venue": "The Glass Galore, Tamarind Square, Cyberjaya",
+    "openDoors": "Buka Pintu",
+    "countdown": {
+      "heading": "Menghitung hari ke majlis",
+      "days": "Hari",
+      "hours": "Jam",
+      "minutes": "Minit",
+      "seconds": "Saat",
+      "today": "Hari ini hari istimewa!",
+      "passed": "Majlis telah berlangsung"
+    }
+  },
+  "info": {
+    "title": "Walimatulurus",
+    "welcome": "Selamat datang ke majlis perkahwinan kami",
+    "bride": "Pengantin Perempuan",
+    "brideName": "Puteri Safa Natasha",
+    "brideParents": "Anak kepada Megat Sharizal & Siti Rahayu",
+    "groom": "Pengantin Lelaki",
+    "groomName": "Amir Izzudin",
+    "groomParents": "Anak kepada Zamri & Ritalaily",
+    "dateLabel": "Tarikh",
+    "dateValue": "Isnin, 31 Ogos 2026",
+    "venueLabel": "Tempat",
+    "venueValue": "The Glass Galore, Tamarind Square, Cyberjaya",
+    "timeLabel": "Masa",
+    "timeValue": "11:00 pagi – 4:00 petang",
+    "dresscode": "Pakaian",
+    "dresscodeValue": "Hijau untuk pengantin lelaki · Kuning untuk pengantin perempuan · Busana tradisional dialu-alukan",
+    "wishesTitle": "Ucapan daripada Tetamu",
+    "wishesEmpty": "Jadilah yang pertama meninggalkan ucapan untuk pengantin.",
+    "wishesFrom": "daripada"
+  },
+  "map": {
+    "title": "Cari Lokasi",
+    "subtitle": "The Glass Galore, Tamarind Square, Cyberjaya",
+    "directions": "Dapatkan Arah",
+    "parking": "Tempat letak kereta percuma disediakan",
+    "landmark": "Tanda aras: Di tengah-tengah CBD Cyberjaya"
+  },
+  "itinerary": {
+    "title": "Atur Cara",
+    "subtitle": "Gambaran hari tersebut",
+    "events": [
+      { "time": "5:30 AM", "label": "Bangun, sarapan ringan & persiapan" },
+      {
+        "time": "6:30 AM",
+        "label": "Solekan dimulakan, persiapan busana nikah"
+      },
+      { "section": "Nikah" },
+      {
+        "time": "9:30 AM",
+        "items": [
+          "Ketibaan keluarga terdekat",
+          "Susun goodies",
+          "Ketibaan pengantin"
+        ]
+      },
+      {
+        "time": "9:45 AM",
+        "items": [
+          "Penyediaan jurunikah dan saksi",
+          "Langkah masuk pengantin lelaki",
+          "Langkah masuk pengantin perempuan"
+        ]
+      },
+      { "section": "Sesi Ijab Kabul Dimulakan" },
+      {
+        "time": "10:00 AM",
+        "items": [
+          "Menandatangani dokumen & doa",
+          "Sesi serah mas kahwin",
+          "Pertukaran cincin",
+          "Sesi salam restu / Gambar keluarga ringkas"
+        ]
+      },
+      { "time": "11:00 AM", "label": "Persiapan sanding" },
+      {
+        "time": "11:00 AM – 12:00 PM",
+        "label": "Persiapan solekan & busana sanding"
+      },
+      {
+        "time": "12:00 PM – 1:15 PM",
+        "label": "Sesi foto luar (busana sanding)"
+      },
+      {
+        "time": "1:15 PM – 1:30 PM",
+        "label": "Sentuhan akhir & bersolek semula"
+      },
+      { "section": "Resepsi" },
+      {
+        "time": "1:30 PM",
+        "items": ["Perarakan keluarga", "Ketibaan rasmi — Pengantin"]
+      },
+      {
+        "time": "2:00 PM",
+        "items": [
+          "Upacara Bersanding / Doa",
+          "Makan beradab",
+          "Potong kek",
+          "Sesi fotografi"
+        ]
+      },
+      {
+        "time": "3:30 PM – 3:45 PM",
+        "label": "Pengumuman penutup"
+      },
+      { "time": "4:00 PM", "label": "Penutup majlis" }
+    ]
+  },
+  "rsvp": {
+    "title": "RSVP",
+    "subtitle": "Sila maklumkan jika anda dapat hadir",
+    "attending": "Adakah anda akan hadir?",
+    "yes": "Ya, saya akan hadir",
+    "no": "Maaf, tidak dapat hadir",
+    "guestCount": "Berapa ramai yang akan hadir?",
+    "guestCountHint": "Termasuk diri sendiri (1–10 tetamu)",
+    "guestName": "Nama Tetamu",
+    "guestNamePlaceholder": "Nama penuh",
+    "phone": "Nombor Telefon",
+    "phonePlaceholder": "+60 12-345 6789",
+    "wishes": "Ucapan (tidak wajib)",
+    "wishesPlaceholder": "Tinggalkan ucapan manis untuk pengantin...",
+    "submit": "Hantar RSVP",
+    "submitting": "Menghantar...",
+    "successTitle": "Terima kasih!",
+    "successMessage": "RSVP anda telah direkodkan. Jumpa anda di hari istimewa!",
+    "another": "Hantar RSVP Lain",
+    "errors": {
+      "attendance": "Sila pilih sama ada anda akan hadir.",
+      "guestCount": "Sila masukkan bilangan tetamu (1–10).",
+      "name": "Sila masukkan nama anda.",
+      "phone": "Sila masukkan nombor telefon yang sah.",
+      "guestDetails": "Sila lengkapkan nama dan telefon untuk setiap tetamu.",
+      "tooManyGuests": "Bilangan tetamu tidak sama dengan nama yang dimasukkan."
+    }
+  },
+  "contact": {
+    "title": "Hubungi",
+    "subtitle": "Hubungi kami jika ada sebarang pertanyaan",
+    "brideFamily": "Keluarga Pengantin Perempuan",
+    "brideFather": "Megat Sharizal bin Amri",
+    "brideMother": "Siti Rahayu binti Ahmad",
+    "brideContact": "+60 12-234 5678",
+    "groomFamily": "Keluarga Pengantin Lelaki",
+    "groomFather": "Zamri bin Marsid",
+    "groomMother": "Ritalaily binti Ishak",
+    "groomContact": "+60 19-345 6789"
+  },
+  "footer": {
+    "madeWith": "Dibuat dengan penuh kasih untuk",
+    "and": "&"
+  }
+}

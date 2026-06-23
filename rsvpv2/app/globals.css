@@ -1,0 +1,590 @@
+@import "tailwindcss";
+
+/* ─── Design tokens ─────────────────────────────────────────
+   Translated from the reference site's plum/sage/pink to a
+   lemon / forest-green palette while preserving the design DNA:
+   frosted glass, hairlines, pill buttons, Garamond serif body.
+   ─────────────────────────────────────────────────────────── */
+
+:root {
+  /* Brand — replaces the reference's plum/mauve with deep leaf-green */
+  --leaf-50:  #f3f8ec;
+  --leaf-100: #e2eed1;
+  --leaf-200: #c9deb0;
+  --leaf-300: #a9c882;
+  --leaf-400: #87ad5b;
+  --leaf-500: #6b9243;
+  --leaf-600: #557735;
+  --leaf-700: #425c2c;
+  --leaf-800: #2f4422;
+  --leaf-900: #1d2c14;
+
+  /* Lemon — replaces the reference's soft pink accent */
+  --lemon-50:  #fffbeb;
+  --lemon-100: #fef3c7;
+  --lemon-200: #fde68a;
+  --lemon-300: #fcd34d;
+  --lemon-400: #fbbf24;
+  --lemon-500: #f59e0b;
+
+  /* Cream / surfaces */
+  --cream:        #fffaf0;
+  --cream-soft:   #fef9ef;
+  --cream-tint:   rgba(255, 250, 240, 0.7);
+  --glass-70:     rgba(255, 251, 235, 0.72);
+  --glass-92:     rgba(255, 251, 235, 0.94);
+
+  /* Ink (text) */
+  --ink:        #1d2c14;
+  --ink-soft:   #425c2c;
+  --ink-muted:  #6a7a52;
+  --ink-faint:  #99a07f;
+
+  /* Hairline (replaces plum 1px divider) */
+  --hairline: rgba(66, 92, 44, 0.22);
+  --hairline-strong: rgba(66, 92, 44, 0.45);
+
+  /* Error / danger */
+  --danger: #b3402e;
+  --danger-soft: #f3d4ca;
+
+  /* Theme aliases for tailwind v4 @theme inline */
+  --color-background: var(--cream);
+  --color-foreground: var(--ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-leaf-50: var(--leaf-50);
+  --color-leaf-100: var(--leaf-100);
+  --color-leaf-200: var(--leaf-200);
+  --color-leaf-300: var(--leaf-300);
+  --color-leaf-400: var(--leaf-400);
+  --color-leaf-500: var(--leaf-500);
+  --color-leaf-600: var(--leaf-600);
+  --color-leaf-700: var(--leaf-700);
+  --color-leaf-800: var(--leaf-800);
+  --color-leaf-900: var(--leaf-900);
+
+  --color-lemon-50: var(--lemon-50);
+  --color-lemon-100: var(--lemon-100);
+  --color-lemon-200: var(--lemon-200);
+  --color-lemon-300: var(--lemon-300);
+  --color-lemon-400: var(--lemon-400);
+  --color-lemon-500: var(--lemon-500);
+
+  --color-cream: var(--cream);
+  --color-cream-soft: var(--cream-soft);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+
+  /* Font tokens — Playfair for display, EB Garamond for body,
+     Dancing Script for accents, Geist for UI controls. */
+  --font-display: var(--font-playfair), "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-serif:   var(--font-eb-garamond), "EB Garamond", Garamond, Georgia, serif;
+  --font-script:  var(--font-dancing), "Dancing Script", "Great Vibes", cursive;
+  --font-sans:    var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Base body ───────────────────────────────────────────── */
+html, body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  /* Fixed lemon-cream wash with subtle radial highlights.
+     Mimics the reference's blurred watercolor background. */
+  background-image:
+    radial-gradient(circle at 15% 12%, rgba(252, 211, 77, 0.18) 0%, transparent 38%),
+    radial-gradient(circle at 88% 88%, rgba(169, 200, 130, 0.20) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(255, 251, 235, 0.8) 0%, var(--cream) 70%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Hide scrollbars globally for the cleaner editorial look */
+::-webkit-scrollbar { width: 0; height: 0; }
+* { scrollbar-width: none; }
+
+/* ─── Section pattern ─────────────────────────────────────── */
+.section {
+  position: relative;
+  border-top: 1px solid var(--hairline);
+  padding: 2.5rem 1rem 4rem;
+}
+
+@media (min-width: 768px) {
+  .section { padding: 3rem 2rem 5rem; }
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  color: var(--leaf-700);
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 12px auto 0;
+  background: linear-gradient(135deg, var(--leaf-500), var(--leaf-700));
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--leaf-600);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* ─── Frosted-glass surfaces (replaces `.panel`) ──────────── */
+.glass {
+  background: var(--glass-70);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(45, 74, 34, 0.10);
+}
+
+.glass-soft {
+  background: var(--glass-92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+}
+
+/* ─── Pills, badges, buttons ──────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.2s;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--leaf-500), var(--leaf-700));
+  color: white;
+  box-shadow: 0 4px 15px rgba(252, 211, 77, 0.45);
+}
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(252, 211, 77, 0.6);
+}
+.btn-primary:active:not(:disabled) { transform: translateY(0); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--leaf-700);
+  border: 2px solid var(--leaf-500);
+}
+.btn-outline:hover { background: var(--leaf-50); }
+
+.btn-ghost {
+  background: var(--lemon-100);
+  color: var(--leaf-800);
+  border: 1px solid var(--lemon-200);
+}
+.btn-ghost:hover { background: var(--lemon-200); }
+
+.badge {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.badge-yes { background: rgba(107, 146, 67, 0.18); color: var(--leaf-700); }
+.badge-no  { background: rgba(179, 64, 46, 0.16); color: var(--danger); }
+.badge-neutral { background: var(--lemon-100); color: var(--ink-soft); }
+
+/* ─── Form fields ─────────────────────────────────────────── */
+.field-label {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--leaf-700);
+  margin-bottom: 0.45rem;
+}
+
+.field-input,
+.field-select,
+.field-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--leaf-500);
+  border-radius: 12px;
+  background: rgba(255, 251, 235, 0.92);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.field-input:focus,
+.field-select:focus,
+.field-textarea:focus {
+  outline: none;
+  border-color: var(--leaf-600);
+  box-shadow: 0 0 0 3px rgba(107, 146, 67, 0.25);
+}
+
+.field-input.error,
+.field-select.error,
+.field-textarea.error {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px rgba(179, 64, 46, 0.15);
+}
+
+.field-error {
+  color: var(--danger);
+  font-size: 0.82rem;
+  margin-top: 0.35rem;
+}
+
+/* ─── Bottom slide-up nav ─────────────────────────────────── */
+.bottom-nav {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  z-index: 40;
+  width: min(600px, calc(100% - 1rem));
+  padding: 0.5rem;
+  background: var(--glass-70);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-bottom: none;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -4px 24px rgba(80, 110, 50, 0.18);
+  transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bottom-nav.hidden-below { bottom: -200px; }
+.bottom-nav.visible { bottom: 0; }
+
+.bottom-nav ul {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: space-around;
+}
+
+.bottom-nav .nav-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0.55rem 0.6rem;
+  border-radius: 14px;
+  font-family: var(--font-serif);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--leaf-700);
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+  flex: 1;
+  overflow: hidden;
+  max-width: 88px;
+}
+
+.bottom-nav .nav-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  left: -100%;
+  transition: left 0.5s ease;
+}
+
+.bottom-nav .nav-btn:hover {
+  background: rgba(107, 146, 67, 0.12);
+  color: var(--leaf-800);
+}
+.bottom-nav .nav-btn:hover::before { left: 100%; }
+
+.bottom-nav .nav-btn.active {
+  background: linear-gradient(135deg, var(--leaf-500), var(--leaf-800));
+  color: white;
+  box-shadow: 0 4px 12px rgba(45, 68, 34, 0.3);
+  transform: translateY(-2px);
+}
+
+.bottom-nav .nav-btn .nav-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/* ─── Floating language switcher pill ─────────────────────── */
+.lang-pill {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: var(--glass-70);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: var(--leaf-700);
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+.lang-pill:hover { transform: scale(1.04); background: var(--glass-92); }
+
+.lang-menu {
+  margin-top: 0.4rem;
+  border-radius: 16px;
+  overflow: hidden;
+  min-width: 150px;
+}
+
+.lang-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.6rem 1rem;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  color: var(--ink);
+  transition: background 0.15s;
+}
+.lang-menu button:hover { background: var(--lemon-100); }
+.lang-menu button.active { color: var(--leaf-700); font-weight: 600; }
+
+/* ─── Sliding-door entrance ─────────────────────────────────
+   Framer-Motion now drives the door translation; we only keep
+   the base layout helpers and the reduced-motion fallback. */
+.door-panel {
+  will-change: transform;
+}
+
+/* ─── Floating leaves ─────────────────────────────────────── */
+@keyframes float-down {
+  0% {
+    transform: translate3d(var(--leaf-x-start, 0), -10vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 0.85; }
+  100% {
+    transform:
+      translate3d(var(--leaf-x-end, 100px), 110vh, 0) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.leaf {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  will-change: transform;
+  animation: float-down linear infinite;
+}
+
+/* ─── Page enter transition ───────────────────────────────── */
+@keyframes page-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-rise { animation: page-rise 0.7s ease-out both; }
+
+/* ─── Wishes list fade-mask ───────────────────────────────── */
+.wishes-scroller {
+  position: relative;
+  max-height: 280px;
+  overflow-y: auto;
+}
+.wishes-scroller::before,
+.wishes-scroller::after {
+  content: "";
+  position: sticky;
+  display: block;
+  left: 0;
+  right: 0;
+  height: 32px;
+  pointer-events: none;
+}
+.wishes-scroller::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--cream), transparent);
+  margin-bottom: -32px;
+}
+.wishes-scroller::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--cream), transparent);
+  margin-top: -32px;
+}
+
+/* ─── Timeline (itinerary) ────────────────────────────────── */
+.timeline {
+  position: relative;
+  padding-left: 0;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 33%;
+  top: 0;
+  bottom: 0;
+  width: 1.5px;
+  transform: translateX(-0.75px);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--leaf-300) 8%,
+    var(--leaf-400) 50%,
+    var(--leaf-300) 92%,
+    transparent
+  );
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 1.5rem;
+  padding-left: calc(33% + 2rem);
+  padding-right: 0;
+  text-align: left;
+}
+
+.timeline-item > .timeline-time {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(33% - 2rem);
+  text-align: right;
+  line-height: 1.4;
+}
+
+.timeline-item > .timeline-content {
+  text-align: left;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 33%;
+  top: 0.4rem;
+  width: 14px;
+  height: 14px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: var(--lemon-100);
+  border: 2px solid var(--leaf-500);
+  box-shadow: 0 0 0 4px rgba(107, 146, 67, 0.10);
+}
+
+.timeline-banner {
+  position: relative;
+  z-index: 1;
+  margin: 0.5rem 0 1rem 0;
+  padding: 0.55rem 1rem;
+  text-align: center;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--leaf-50),
+    var(--lemon-100),
+    var(--leaf-50)
+  );
+  border: 1px solid var(--leaf-300);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--leaf-700);
+  letter-spacing: 0.05em;
+}
+
+/* ─── Couple hero card ────────────────────────────────────── */
+.couple-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 9vw, 4rem);
+  color: var(--leaf-800);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+}
+
+.couple-amp {
+  font-family: var(--font-script);
+  font-size: clamp(2rem, 7vw, 3rem);
+  color: var(--leaf-600);
+  display: block;
+  margin: 0.25rem 0;
+}
+
+.wedding-date {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  color: var(--leaf-700);
+  letter-spacing: 0.05em;
+}
+
+/* ─── Respect reduced motion ──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,107 @@
+"use client";
+
+import { useI18n } from "@/components/I18nProvider";
+import { wedding } from "@/lib/wedding-data";
+import { PhoneIcon, WhatsAppIcon } from "@/components/Icons";
+
+export function ContactSection() {
+  const { t } = useI18n();
+
+  return (
+    <div className="space-y-12">
+      <header className="text-center space-y-2">
+        <div className="divider-ornament" aria-hidden>
+          <span>🍋</span>
+          <span>✦</span>
+          <span>🌿</span>
+        </div>
+        <h2 className="section-title">{t.contact.title}</h2>
+        <p className="section-subtitle">{t.contact.subtitle}</p>
+      </header>
+
+      <div className="grid sm:grid-cols-2 gap-12">
+        <FamilyBlock
+          eyebrow={t.contact.brideFamily}
+          father={t.contact.brideFather}
+          mother={t.contact.brideMother}
+          contact={wedding.bride.contact}
+        />
+        <FamilyBlock
+          eyebrow={t.contact.groomFamily}
+          father={t.contact.groomFather}
+          mother={t.contact.groomMother}
+          contact={wedding.groom.contact}
+        />
+      </div>
+    </div>
+  );
+}
+
+function FamilyBlock({
+  eyebrow,
+  father,
+  mother,
+  contact,
+}: {
+  eyebrow: string;
+  father: string;
+  mother: string;
+  contact: string;
+}) {
+  const phone = contact.replace(/[^\d+]/g, "");
+  const whatsappNumber = phone.replace(/^\+/, "");
+
+  return (
+    <div className="text-center space-y-4">
+      <p
+        className="text-xs uppercase tracking-[0.3em]"
+        style={{ color: "var(--leaf-700)" }}
+      >
+        {eyebrow}
+      </p>
+      <div className="space-y-3" style={{ color: "var(--ink)" }}>
+        <ContactRow name={father} phone={phone} whatsappNumber={whatsappNumber} />
+        <p style={{ color: "var(--ink-muted)" }}>&amp;</p>
+        <ContactRow name={mother} phone={phone} whatsappNumber={whatsappNumber} />
+      </div>
+    </div>
+  );
+}
+
+function ContactRow({
+  name,
+  phone,
+  whatsappNumber,
+}: {
+  name: string;
+  phone: string;
+  whatsappNumber: string;
+}) {
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <p style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem" }}>
+        {name}
+      </p>
+      <div className="flex items-center justify-center gap-2">
+        <a
+          href={`tel:${phone}`}
+          aria-label={`Call ${name}`}
+          title={`Call ${name}`}
+          className="btn btn-ghost !p-2 !rounded-full"
+        >
+          <PhoneIcon size={18} />
+        </a>
+        <a
+          href={`https://wa.me/${whatsappNumber}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`WhatsApp ${name}`}
+          title={`WhatsApp ${name}`}
+          className="btn btn-ghost !p-2 !rounded-full"
+        >
+          <WhatsAppIcon size={18} />
+        </a>
+      </div>
+    </div>
+  );
+}

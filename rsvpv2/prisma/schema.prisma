@@ -1,0 +1,39 @@
+// Prisma schema for the wedding RSVP app.
+// Tables: Rsvp, Wish
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Rsvp {
+  id            String   @id @default(cuid())
+  attending     Boolean
+  guestCount    Int
+  // Guests is stored as JSON (array of {name, phone}).
+  guests        Json
+  wishes        String?
+  submittedAt   DateTime @default(now())
+  locale        String   @default("en")
+  // Best-effort client info for analytics / spam-control.
+  userAgent     String?
+  ipHash        String?
+
+  @@index([submittedAt])
+}
+
+model Wish {
+  id        String   @id @default(cuid())
+  name      String
+  message   String
+  createdAt DateTime @default(now())
+  locale    String   @default("en")
+  // Set to true if approved by a moderator; null = auto-approved.
+  approved  Boolean  @default(true)
+
+  @@index([createdAt])
+}
