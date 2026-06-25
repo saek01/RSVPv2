@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { isAdminConfigured, isAdminRequest } from "@/lib/auth";
 import { prisma } from "@/lib/db";
-import { AdminDashboard } from "@/components/admin/AdminDashboard";
+import { AdminDashboard, type AdminRsvp } from "@/components/admin/AdminDashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -54,6 +54,10 @@ export default async function AdminPage() {
     <AdminDashboard
       initialRsvps={rsvps.map((r) => ({
         ...r,
+        // Prisma types `Json` columns as `JsonValue` (which includes null),
+        // but the application always writes a Guest[] here. Narrow at the
+        // boundary so the rest of the code can rely on the typed shape.
+        guests: r.guests as unknown as AdminRsvp["guests"],
         submittedAt: r.submittedAt.toISOString(),
       }))}
       initialWishes={wishes.map((w) => ({
